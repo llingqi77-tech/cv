@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { BookOpen, Video, Heart, Eye, Linkedin, Github, Share2 } from 'lucide-react';
+import { assetUrl } from '@/lib/utils';
 
 const Social = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -31,7 +32,7 @@ const Social = () => {
       views: '600+',
       likes: '20+',
       icon: Video,
-      link: '/video-求职面试.mp4',
+      link: assetUrl('/video-求职面试.mp4'),
       previewImage: '',
       isVideo: true,
     },
@@ -42,7 +43,7 @@ const Social = () => {
       likes: '300+',
       icon: Video,
       link: 'http://xhslink.com/o/4QYeO37gxPx',
-      previewImage: '/interview.png',
+      previewImage: assetUrl('/interview.png'),
     },
     {
       title: 'AI产品经理入门指南',
@@ -51,7 +52,7 @@ const Social = () => {
       likes: '400+',
       icon: BookOpen,
       link: 'http://xhslink.com/o/3cquOHzyFUH',
-      previewImage: '/learning.png',
+      previewImage: assetUrl('/learning.png'),
     },
   ];
 
@@ -101,7 +102,7 @@ const Social = () => {
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-white dark:bg-[#171717] rounded-full text-[#171717] dark:text-[#fafafa] hover:bg-[#F5F5F5] dark:hover:bg-[#2A2A3E] border border-[#e5e5e5] dark:border-[#262626] transition-colors focus-visible:ring-2 focus-visible:ring-[#404040] dark:focus-visible:ring-[#525252] focus-visible:ring-offset-2"
               aria-label="小红书"
             >
-              <img src="/xhs.png" alt="小红书" className="w-5 h-5 object-contain shrink-0" />
+              <img src={assetUrl("/xhs.png")} alt="小红书" className="w-5 h-5 object-contain shrink-0" />
               小红书
             </a>
             <a

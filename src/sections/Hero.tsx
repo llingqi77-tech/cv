@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowDown, Mail, Briefcase, Sparkles, BarChart3, Users, Palette, TrendingUp, Handshake } from 'lucide-react';
+import { assetUrl } from '@/lib/utils';
 
 const Hero = () => {
   const [loaded, setLoaded] = useState(false);
@@ -43,7 +44,7 @@ const Hero = () => {
             <div className="relative aspect-[4/5] max-w-md mx-auto lg:mx-0">
               <div className="relative h-full rounded-2xl overflow-hidden bg-[#d4d4d4] dark:bg-[#171717] border border-[#e5e5e5] dark:border-[#262626] shadow-sm">
                 <img
-                  src="/profile.png"
+                  src={assetUrl("/profile.png")}
                   alt="董璐瑶"
                   className="w-full h-full object-cover object-top"
                 />

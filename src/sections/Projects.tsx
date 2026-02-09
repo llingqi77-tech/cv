@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ExternalLink, Trophy, BarChart3, Users, Sparkles, Compass, ChevronRight } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { assetUrl } from '@/lib/utils';
 
 const FILTER_CATEGORIES = ['全部', 'AI产品', '产品设计', '数据分析', '市场研究'] as const;
 const CATEGORY_TAG_MAP: Record<string, string[]> = {
@@ -28,7 +29,7 @@ const projects = [
     color: '#0071e3',
     icon: Users,
     featured: true,
-    previewImage: '/interview1.png',
+    previewImage: assetUrl('/interview1.png'),
     link: 'https://www.groupinterview.online/',
     githubLink: 'https://github.com/llingqi77-tech/interview-second',
     hasVideo: true,
@@ -51,9 +52,9 @@ const projects = [
     icon: Compass,
     featured: false,
     showImageLayout: true,
-    previewImage: '/travel.png',
+    previewImage: assetUrl('/travel.png'),
     link: 'https://www.coze.cn/s/baXCo8B2eYQ/',
-    image: '/travel.png',
+    image: assetUrl('/travel.png'),
   },
   {
     id: 3,
@@ -171,7 +172,7 @@ const Projects = () => {
         {featuredFiltered.length > 0 && (
         <div className="grid md:grid-cols-2 gap-6">
           {featuredFiltered.map((project, index) => {
-            const previewImg = 'previewImage' in project ? project.previewImage : '/interview.png';
+            const previewImg = 'previewImage' in project ? project.previewImage : assetUrl('/interview.png');
             const isTravelAgent = project.title === '旅游智能体';
             const imageFirst = isTravelAgent;
             return (

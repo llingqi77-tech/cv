@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Calendar, MapPin, ChevronRight, Play, Pause } from 'lucide-react';
+import { assetUrl } from '@/lib/utils';
 
 const Experience = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -46,13 +47,13 @@ const Experience = () => {
       location: '上海',
       hasVideo: true,
       pitchlabImages: [
-        { src: '/pitchlab/3.jpeg', label: 'hero页' },
-        { src: '/pitchlab/2.jpeg', label: '人设库' },
-        { src: '/pitchlab/4.jpeg', label: '3分钟即兴练习' },
-        { src: '/pitchlab/5.jpeg', label: '专业演讲训练' },
-        { src: '/pitchlab/6.jpeg', label: '对话练习' },
-        { src: '/pitchlab/7.jpeg', label: '用户的声音' },
-        { src: '/pitchlab/1.jpeg', label: 'FAQ' },
+        { src: assetUrl('/pitchlab/3.jpeg'), label: 'hero页' },
+        { src: assetUrl('/pitchlab/2.jpeg'), label: '人设库' },
+        { src: assetUrl('/pitchlab/4.jpeg'), label: '3分钟即兴练习' },
+        { src: assetUrl('/pitchlab/5.jpeg'), label: '专业演讲训练' },
+        { src: assetUrl('/pitchlab/6.jpeg'), label: '对话练习' },
+        { src: assetUrl('/pitchlab/7.jpeg'), label: '用户的声音' },
+        { src: assetUrl('/pitchlab/1.jpeg'), label: 'FAQ' },
       ],
       points: [
         '负责PitchLab AI表达训练助手产品的0-1设计，运用Google AI Studio进行原型设计',
@@ -68,7 +69,7 @@ const Experience = () => {
       time: '2025.06 - 2025.10',
       location: '上海',
       hasVideo: false,
-      image: '/董璐瑶 实习转正答辩(1)(1)_05.png',
+      image: assetUrl('/董璐瑶 实习转正答辩(1)(1)_05.png'),
       pitchlabImages: undefined,
       points: [
         '分析车险投保转化漏斗数据，搭建30余家机构的日保费看板',
@@ -83,7 +84,7 @@ const Experience = () => {
       time: '2024.09 - 2024.12',
       location: '上海',
       hasVideo: false,
-      image: '/tuhu.png',
+      image: assetUrl('/tuhu.png'),
       pitchlabImages: undefined,
       points: [
         '品牌日数据量化评估，产出10+结案报告',
@@ -164,7 +165,7 @@ const Experience = () => {
                     <div className="relative bg-black aspect-video lg:aspect-auto">
                       <video
                         ref={videoRef}
-                        src="/hero.mp4"
+                        src={assetUrl("/hero.mp4")}
                         className="w-full h-full object-cover"
                         loop
                         playsInline
