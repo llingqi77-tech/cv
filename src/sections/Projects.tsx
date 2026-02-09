@@ -114,7 +114,7 @@ const projects = [
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
-  const [activeFilter, setActiveFilter] = useState<(typeof FILTER_CATEGORIES)[number]>('全部');
+  const [activeFilter] = useState<(typeof FILTER_CATEGORIES)[number]>('全部');
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
   const filteredProjects = activeFilter === '全部'
