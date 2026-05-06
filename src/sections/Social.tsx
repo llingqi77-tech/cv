@@ -149,8 +149,9 @@ const Social = () => {
                     ) : content.previewImage && !failedPreviewImages.has(content.previewImage) ? (
                       <img
                         src={content.previewImage}
-                        alt=""
+                        alt={`${content.title} 预览图`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
                         onError={() => setFailedPreviewImages((s) => new Set(s).add(content.previewImage))}
                       />
                     ) : (

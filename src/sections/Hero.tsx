@@ -43,8 +43,9 @@ const Hero = () => {
               <div className="relative h-full rounded-3xl overflow-hidden bg-[#F4A4A4]/20 border-4 border-[#F4A4A4]/30 shadow-lg">
                 <img
                   src={assetUrl("/profile.png")}
-                  alt="董璐瑶"
+                  alt="董璐瑶个人形象照"
                   className="w-full h-full object-cover object-center"
+                  loading="lazy"
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#1A3C34]/80 to-transparent">
                   <div className="bg-white/95 backdrop-blur rounded-2xl p-4 border-2 border-[#F4A4A4]/20">

@@ -30,9 +30,9 @@ const projects = [
     color: '#F4A4A4',
     icon: Users,
     featured: true,
-    previewImage: assetUrl('/interview-landing.png'),
+    previewImage: assetUrl('/interview-landing.jpg'),
     detailImages: [
-      assetUrl('/interview-app.png'),
+      assetUrl('/interview-app.jpg'),
     ],
     link: 'https://www.groupinterview.online/',
     githubLink: 'https://github.com/llingqi77-tech/interview-second',

@@ -192,8 +192,9 @@ const Experience = () => {
                     <div className="relative bg-[#FAF7F2] aspect-video lg:aspect-auto flex items-center justify-center overflow-hidden">
                       <img
                         src={exp.image}
-                        alt={exp.company}
+                        alt={`${exp.company} 实习相关图片`}
                         className="w-full h-full object-contain bg-white"
+                        loading="lazy"
                       />
                     </div>
                   ) : (

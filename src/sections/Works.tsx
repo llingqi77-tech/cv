@@ -155,8 +155,9 @@ const Works = () => {
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={work.image}
-                    alt={work.title}
+                    alt={`${work.title} 封面图`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
 
