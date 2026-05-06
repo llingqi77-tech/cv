@@ -43,7 +43,7 @@ const Social = () => {
       likes: '300+',
       icon: Video,
       link: 'http://xhslink.com/o/4QYeO37gxPx',
-      previewImage: assetUrl('/interview.png'),
+      previewImage: assetUrl('/interview.webp'),
     },
     {
       title: 'AI产品经理入门指南',
@@ -52,7 +52,7 @@ const Social = () => {
       likes: '400+',
       icon: BookOpen,
       link: 'http://xhslink.com/o/3cquOHzyFUH',
-      previewImage: assetUrl('/learning.png'),
+      previewImage: assetUrl('/learning.webp'),
     },
   ];
 
@@ -102,7 +102,7 @@ const Social = () => {
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-full text-[#1A3C34] hover:bg-[#FAF7F2] border-2 border-[#F4A4A4]/20 transition-colors focus-visible:ring-2 focus-visible:ring-[#1A3C34] focus-visible:ring-offset-2 font-medium"
               aria-label="小红书"
             >
-              <img src={assetUrl("/xhs.png")} alt="小红书" className="w-5 h-5 object-contain shrink-0" />
+              <img src={assetUrl("/xhs.webp")} alt="小红书" className="w-5 h-5 object-contain shrink-0" />
               小红书
             </a>
             <a

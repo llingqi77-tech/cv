@@ -30,9 +30,9 @@ const projects = [
     color: '#F4A4A4',
     icon: Users,
     featured: true,
-    previewImage: assetUrl('/interview-landing.jpg'),
+    previewImage: assetUrl('/interview-landing.webp'),
     detailImages: [
-      assetUrl('/interview-app.jpg'),
+      assetUrl('/interview-app.webp'),
     ],
     link: 'https://www.groupinterview.online/',
     githubLink: 'https://github.com/llingqi77-tech/interview-second',
@@ -56,9 +56,9 @@ const projects = [
     icon: Compass,
     featured: false,
     showImageLayout: true,
-    previewImage: assetUrl('/travel.png'),
+    previewImage: assetUrl('/travel.webp'),
     link: 'https://www.coze.cn/s/baXCo8B2eYQ/',
-    image: assetUrl('/travel.png'),
+    image: assetUrl('/travel.webp'),
   },
   {
     id: 3,
@@ -176,7 +176,7 @@ const Projects = () => {
         {featuredFiltered.length > 0 && (
         <div className="grid md:grid-cols-2 gap-6">
           {featuredFiltered.map((project, index) => {
-            const previewImg = 'previewImage' in project ? project.previewImage : assetUrl('/interview.png');
+            const previewImg = 'previewImage' in project ? project.previewImage : assetUrl('/interview.webp');
             const isTravelAgent = project.title === '旅游智能体';
             const imageFirst = isTravelAgent;
             return (

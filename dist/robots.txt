@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://llingqi77-tech.github.io/cv/sitemap.xml

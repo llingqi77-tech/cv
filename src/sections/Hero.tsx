@@ -42,7 +42,7 @@ const Hero = () => {
             <div className="relative aspect-[2/3] max-w-sm mx-auto lg:mx-0">
               <div className="relative h-full rounded-3xl overflow-hidden bg-[#F4A4A4]/20 border-4 border-[#F4A4A4]/30 shadow-lg">
                 <img
-                  src={assetUrl("/profile.png")}
+                  src={assetUrl("/profile.webp")}
                   alt="董璐瑶个人形象照"
                   className="w-full h-full object-cover object-center"
                   loading="lazy"
