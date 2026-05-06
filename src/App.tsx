@@ -22,18 +22,18 @@ function App() {
 
   return (
     <>
-      <div className="min-h-screen bg-[#f5f5f5] dark:bg-[#0a0a0a] text-[#171717] dark:text-[#fafafa] overflow-x-hidden">
-      <Navigation scrolled={scrolled} />
-      <main>
-        <Hero />
-        <Experience />
-        <Projects />
-        <Works />
-        <Social />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+      <div className="min-h-screen bg-[#FAF7F2] text-[#1A3C34] overflow-x-hidden">
+        <Navigation scrolled={scrolled} />
+        <main>
+          <Hero />
+          <Experience />
+          <Projects />
+          <Works />
+          <Social />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

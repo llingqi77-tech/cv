@@ -40,7 +40,7 @@ const Works = () => {
         '投放总播放量4937，总点赞量509',
       ],
       tags: ['4P营销', '短视频运营', 'VIS设计', '增长飞轮'],
-      color: '#0071e3',
+      color: '#F4A4A4',
       icon: TrendingUp,
       image: assetUrl('/Enjoy This Moment-早康枸杞原浆大学生市场营销策略研究_01.png'),
       detailImages: [
@@ -76,7 +76,7 @@ const Works = () => {
         '设置人格配对、社交活动，增强情感连接',
       ],
       tags: ['MBTI营销', 'IP联名', '线上线下联动', '社交活动'],
-      color: '#34c759',
+      color: '#1A3C34',
       icon: Users,
       image: assetUrl('/世界缤纷果真懂你-副本_01.png'),
       detailImages: [
@@ -103,7 +103,7 @@ const Works = () => {
         '已有国内外企业将香蕉纤维用于制作钱包和编织袋',
       ],
       tags: ['可持续包装', '环保材料', 'ESG', '创新设计'],
-      color: '#30d158',
+      color: '#F4A4A4',
       icon: Leaf,
       image: assetUrl('/defu/幻灯片32.png'),
       detailImages: [
@@ -123,7 +123,7 @@ const Works = () => {
     <section
       id="works"
       ref={sectionRef}
-      className="relative py-20 md:py-24 lg:py-32 overflow-hidden bg-[#fafafa] dark:bg-[#0a0a0a]"
+      className="relative py-20 md:py-24 lg:py-32 overflow-hidden bg-white"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div
@@ -131,10 +131,10 @@ const Works = () => {
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <span className="text-[#737373] dark:text-[#a3a3a3] text-sm font-medium uppercase tracking-wider">
+          <span className="text-[#F4A4A4] text-sm font-bold uppercase tracking-wider">
             商赛作品
           </span>
-          <h2 className="text-4xl md:text-5xl font-semibold text-[#171717] dark:text-[#fafafa] mt-2 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#1A3C34] mt-2 tracking-tight">
             营销策划实战
           </h2>
         </div>
@@ -149,7 +149,7 @@ const Works = () => {
               style={{ transitionDelay: `${200 + index * 100}ms` }}
             >
               <div
-                className="relative bg-white dark:bg-[#171717] rounded-2xl overflow-hidden border border-[#e5e5e5] dark:border-[#262626] hover:border-[#404040] hover:-translate-y-0.5 transition-all duration-500 cursor-pointer h-full flex flex-col"
+                className="relative bg-[#FAF7F2] rounded-3xl overflow-hidden border-2 border-[#F4A4A4]/10 hover:border-[#F4A4A4]/40 hover:-translate-y-0.5 transition-all duration-500 cursor-pointer h-full flex flex-col shadow-sm hover:shadow-lg"
                 onClick={() => setSelectedWork(work)}
               >
                 <div className="relative h-48 overflow-hidden">
@@ -160,26 +160,26 @@ const Works = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
 
-                  <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 bg-white/95 dark:bg-[#171717]/95 backdrop-blur rounded-full shadow-sm">
+                  <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 bg-white/95 backdrop-blur rounded-full shadow-sm border-2 border-[#F4A4A4]/20">
                     <Award size={14} style={{ color: work.color }} />
-                    <span className="text-xs font-medium text-[#171717] dark:text-[#fafafa]">{work.award}</span>
+                    <span className="text-xs font-bold text-[#1A3C34]">{work.award}</span>
                   </div>
                 </div>
 
                 <div className="p-6 flex-1 flex flex-col">
                   <div className="flex items-center gap-2 mb-3">
                     <div
-                      className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#e5e5e5] dark:bg-[#171717]"
+                      className="w-8 h-8 rounded-xl flex items-center justify-center bg-white border-2 border-[#F4A4A4]/20"
                       style={{ color: work.color }}
                     >
                       <work.icon size={16} />
                     </div>
-                    <h3 className="text-lg font-semibold text-[#171717] dark:text-[#fafafa] line-clamp-1">
+                    <h3 className="text-lg font-bold text-[#1A3C34] line-clamp-1">
                       {work.title}
                     </h3>
                   </div>
 
-                  <p className="text-[#737373] dark:text-[#a3a3a3] text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
+                  <p className="text-[#1A3C34]/70 text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
                     {work.description}
                   </p>
 
@@ -187,14 +187,14 @@ const Works = () => {
                     {work.tags.slice(0, 3).map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-0.5 text-xs rounded-full bg-[#e5e5e5] dark:bg-[#171717] text-[#737373] dark:text-[#a3a3a3]"
+                        className="px-2 py-0.5 text-xs rounded-full bg-white border border-[#F4A4A4]/20 text-[#1A3C34]/70 font-medium"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-1 text-sm font-medium" style={{ color: work.color }}>
+                  <div className="flex items-center gap-1 text-sm font-bold" style={{ color: work.color }}>
                     <span>查看详情</span>
                     <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -209,46 +209,46 @@ const Works = () => {
         open={!!selectedWork}
         onOpenChange={() => setSelectedWork(null)}
       >
-        <DialogContent className="max-w-2xl bg-white dark:bg-[#171717] border-[#e5e5e5] dark:border-[#262626] text-[#171717] dark:text-[#fafafa] max-h-[90vh] overflow-y-auto shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-2xl">
+        <DialogContent className="max-w-2xl bg-white border-2 border-[#F4A4A4]/20 text-[#1A3C34] max-h-[90vh] overflow-y-auto shadow-lg rounded-3xl">
           {selectedWork && (
             <>
               <DialogHeader>
-                <div className="relative h-48 -mt-6 -mx-6 mb-4 overflow-hidden rounded-t-2xl">
+                <div className="relative h-48 -mt-6 -mx-6 mb-4 overflow-hidden rounded-t-3xl">
                   <img
                     src={selectedWork.image}
                     alt={selectedWork.title}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <div className="absolute bottom-4 left-6 flex items-center gap-2 px-3 py-1.5 bg-white/95 dark:bg-[#171717]/95 backdrop-blur rounded-full shadow-sm">
+                  <div className="absolute bottom-4 left-6 flex items-center gap-2 px-3 py-1.5 bg-white/95 backdrop-blur rounded-full shadow-sm border-2 border-[#F4A4A4]/20">
                     <Award size={14} style={{ color: selectedWork.color }} />
-                    <span className="text-xs font-medium text-[#171717] dark:text-[#fafafa]">
+                    <span className="text-xs font-bold text-[#1A3C34]">
                       {selectedWork.award}
                     </span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 mb-2">
                   <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#e5e5e5] dark:bg-[#171717]"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#FAF7F2] border-2 border-[#F4A4A4]/20"
                     style={{ color: selectedWork.color }}
                   >
                     <selectedWork.icon size={20} />
                   </div>
-                  <DialogTitle className="text-xl font-semibold text-[#171717] dark:text-[#fafafa]">
+                  <DialogTitle className="text-xl font-bold text-[#1A3C34]">
                     {selectedWork.title}
                   </DialogTitle>
                 </div>
               </DialogHeader>
 
               <div className="mt-4">
-                <p className="text-[#737373] dark:text-[#a3a3a3] leading-relaxed mb-6 text-[15px]">
+                <p className="text-[#1A3C34]/70 leading-relaxed mb-6 text-[15px]">
                   {selectedWork.description}
                 </p>
 
-                <h4 className="text-lg font-semibold text-[#171717] dark:text-[#fafafa] mb-3">方案亮点</h4>
+                <h4 className="text-lg font-bold text-[#1A3C34] mb-3">方案亮点</h4>
                 <div className="space-y-2 mb-6">
                   {selectedWork.highlights.map((highlight, i) => (
-                    <div key={i} className="flex items-start gap-2 text-[#737373] dark:text-[#a3a3a3]">
+                    <div key={i} className="flex items-start gap-2 text-[#1A3C34]/70">
                       <ChevronRight
                         size={16}
                         className="mt-1 flex-shrink-0"
@@ -261,14 +261,14 @@ const Works = () => {
 
                 {selectedWork.detailImages && selectedWork.detailImages.length > 0 && (
                   <div className="mb-6">
-                    <h4 className="text-lg font-semibold text-[#171717] dark:text-[#fafafa] mb-3">方案展示</h4>
+                    <h4 className="text-lg font-bold text-[#1A3C34] mb-3">方案展示</h4>
                     <div className="space-y-4 max-h-[400px] overflow-y-auto">
                       {selectedWork.detailImages.map((imgSrc, i) => (
                         <img
                           key={i}
                           src={imgSrc}
                           alt={`${selectedWork.title} - ${i + 1}`}
-                          className="w-full rounded-lg border border-[#e5e5e5] dark:border-[#262626] shadow-sm"
+                          className="w-full rounded-2xl border-2 border-[#F4A4A4]/10 shadow-sm"
                         />
                       ))}
                     </div>
@@ -279,7 +279,7 @@ const Works = () => {
                   {selectedWork.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 text-sm rounded-full bg-[#e5e5e5] dark:bg-[#171717] text-[#737373] dark:text-[#a3a3a3]"
+                      className="px-3 py-1 text-sm rounded-full bg-[#FAF7F2] border border-[#F4A4A4]/20 text-[#1A3C34]/70 font-medium"
                     >
                       {tag}
                     </span>

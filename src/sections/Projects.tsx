@@ -18,18 +18,22 @@ const projects = [
     subtitle: 'AI产品设计 | 0-1产品负责人',
     time: '2026.12 - 至今',
     description:
-      '从非技术背景出发，洞察群面痛点，运用vibe coding工具，从零规划搭建"群面模拟器"产品框架。设计领导、总结等常见性格人设，遵循群面4阶段，实现与用户真实对话，模拟群面场景。',
+      '基于真实群面场景的 AI 模拟练习平台。从零规划搭建产品框架，还原无领导小组讨论全流程——覆盖互联网/金融/咨询等行业 500+ 真实题库，AI 扮演控场型、逻辑型、细节型等多风格面试者，与用户进行实时对话互动。练习后从发言时机、结构化贡献、团队协作等多维度提供智能评估反馈，帮助求职者高效提升面试技巧，自信应对真实面试。',
     achievements: [
       '小红书单篇帖子浏览量破1000+',
       '产品内测社群吸引30+人加入',
-      '运用vibe coding独立完成开发',
+      '覆盖500+真实企业群面题库',
+      '支持多风格AI角色扮演与智能评估反馈',
       'Vercel + 阿里云域名部署上线',
     ],
     tags: ['AI产品', 'Vibe Coding', 'Vercel', '独立开发'],
-    color: '#0071e3',
+    color: '#F4A4A4',
     icon: Users,
     featured: true,
-    previewImage: assetUrl('/interview1.png'),
+    previewImage: assetUrl('/interview-landing.png'),
+    detailImages: [
+      assetUrl('/interview-app.png'),
+    ],
     link: 'https://www.groupinterview.online/',
     githubLink: 'https://github.com/llingqi77-tech/interview-second',
     hasVideo: true,
@@ -48,7 +52,7 @@ const projects = [
       '角色设定与回答限制',
     ],
     tags: ['Coze', 'AI Agent', '旅行规划', '0-1产品'],
-    color: '#ff9500',
+    color: '#1A3C34',
     icon: Compass,
     featured: false,
     showImageLayout: true,
@@ -70,7 +74,7 @@ const projects = [
       '解决山区等复杂环境网络不通问题',
     ],
     tags: ['产品设计', '用户调研', '创新挑战'],
-    color: '#34c759',
+    color: '#F4A4A4',
     icon: Trophy,
     featured: false,
   },
@@ -88,7 +92,7 @@ const projects = [
       '覆盖超千万流动数据',
     ],
     tags: ['数据分析', '社会网络', '可视化'],
-    color: '#5e5ce6',
+    color: '#1A3C34',
     icon: BarChart3,
     featured: false,
   },
@@ -106,7 +110,7 @@ const projects = [
       'A/B实验测试抖音视频流量',
     ],
     tags: ['市场研究', '数据爬取', 'A/B测试'],
-    color: '#30d158',
+    color: '#F4A4A4',
     icon: Sparkles,
     featured: false,
   },
@@ -149,7 +153,7 @@ const Projects = () => {
     <section
       id="projects"
       ref={sectionRef}
-      className="relative py-20 md:py-24 lg:py-32 overflow-hidden bg-[#f5f5f5] dark:bg-[#0a0a0a]"
+      className="relative py-20 md:py-24 lg:py-32 overflow-hidden bg-[#FAF7F2]"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div
@@ -157,16 +161,16 @@ const Projects = () => {
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <span className="text-[#737373] dark:text-[#a3a3a3] text-sm font-medium uppercase tracking-wider">
+          <span className="text-[#F4A4A4] text-sm font-bold uppercase tracking-wider">
             项目经历
           </span>
-          <h2 className="text-4xl md:text-5xl font-semibold text-[#171717] dark:text-[#fafafa] mt-2 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#1A3C34] mt-2 tracking-tight">
             从0到1创造
           </h2>
         </div>
 
         {filteredProjects.length === 0 && (
-          <p className="text-[#737373] dark:text-[#a3a3a3] text-center py-12">暂无匹配项目</p>
+          <p className="text-[#1A3C34]/60 text-center py-12">暂无匹配项目</p>
         )}
 
         {featuredFiltered.length > 0 && (
@@ -184,11 +188,11 @@ const Projects = () => {
                 style={{ transitionDelay: `${200 + index * 80}ms` }}
               >
                 <div
-                  className="relative bg-white dark:bg-[#171717] rounded-2xl overflow-hidden border border-[#e5e5e5] dark:border-[#262626] hover:border-[#404040] hover:-translate-y-0.5 transition-all duration-500 cursor-pointer h-full flex flex-col"
+                  className="relative bg-white rounded-3xl overflow-hidden border-2 border-[#F4A4A4]/10 hover:border-[#F4A4A4]/40 hover:-translate-y-0.5 transition-all duration-500 cursor-pointer h-full flex flex-col shadow-sm hover:shadow-lg"
                   onClick={() => setSelectedProject(project)}
                 >
                   {project.featured && (
-                    <div className="absolute top-4 right-4 z-10 px-3 py-1.5 bg-[#262626] dark:bg-[#404040] text-[#fafafa] text-xs font-medium rounded-full">
+                    <div className="absolute top-4 right-4 z-10 px-3 py-1.5 bg-[#F4A4A4] text-white text-xs font-bold rounded-full">
                       重点项目
                     </div>
                   )}
@@ -202,27 +206,27 @@ const Projects = () => {
                     <div className={`p-6 md:p-8 flex flex-col ${imageFirst ? 'order-2' : 'order-1'}`}>
                       <div className="flex items-center gap-3 mb-4">
                         <div
-                          className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#e5e5e5] dark:bg-[#171717]"
+                          className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#FAF7F2] border-2 border-[#F4A4A4]/20"
                           style={{ color: project.color }}
                         >
                           <project.icon size={24} />
                         </div>
                         <div>
-                          <h3 className="text-xl font-semibold text-[#171717] dark:text-[#fafafa]">{project.title}</h3>
-                          <p className="text-sm font-medium text-[#737373] dark:text-[#a3a3a3]" style={{ color: project.color }}>
+                          <h3 className="text-xl font-bold text-[#1A3C34]">{project.title}</h3>
+                          <p className="text-sm font-bold text-[#F4A4A4]">
                             {project.subtitle}
                           </p>
                         </div>
                       </div>
 
-                      <p className="text-[#737373] dark:text-[#a3a3a3] text-sm mb-4">{project.time}</p>
-                      <p className="text-[#737373] dark:text-[#a3a3a3] text-[15px] leading-relaxed mb-6 line-clamp-3">
+                      <p className="text-[#1A3C34]/60 text-sm mb-4 font-medium">{project.time}</p>
+                      <p className="text-[#1A3C34]/70 text-[15px] leading-relaxed mb-6 line-clamp-3">
                         {project.description}
                       </p>
 
                       <div className="space-y-2 mb-6">
                         {project.achievements.slice(0, 3).map((achievement, i) => (
-                          <div key={i} className="flex items-center gap-2 text-sm text-[#737373] dark:text-[#a3a3a3]">
+                          <div key={i} className="flex items-center gap-2 text-sm text-[#1A3C34]/70">
                             <ChevronRight size={14} style={{ color: project.color }} />
                             <span>{achievement}</span>
                           </div>
@@ -233,7 +237,7 @@ const Projects = () => {
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-3 py-1 text-xs rounded-full bg-[#e5e5e5] dark:bg-[#171717] text-[#737373] dark:text-[#a3a3a3]"
+                            className="px-3 py-1 text-xs rounded-full bg-[#FAF7F2] border border-[#F4A4A4]/20 text-[#1A3C34]/70 font-medium"
                           >
                             {tag}
                           </span>
@@ -247,7 +251,7 @@ const Projects = () => {
                                 href={project.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#171717] dark:bg-white text-white dark:text-black hover:bg-[#262626] dark:hover:bg-[#e5e5e5] text-sm font-medium rounded-xl transition-colors"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1A3C34] text-white hover:bg-[#F4A4A4] text-sm font-bold rounded-full transition-colors"
                                 onClick={(e) => e.stopPropagation()}
                               >
                                 <ExternalLink size={14} />
@@ -259,7 +263,7 @@ const Projects = () => {
                                 href={project.githubLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#171717] dark:bg-white text-white dark:text-black hover:bg-[#262626] dark:hover:bg-[#e5e5e5] text-sm font-medium rounded-xl transition-colors"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FAF7F2] text-[#1A3C34] border-2 border-[#1A3C34] hover:bg-[#1A3C34] hover:text-white text-sm font-bold rounded-full transition-colors"
                                 onClick={(e) => e.stopPropagation()}
                               >
                                 GitHub
@@ -291,10 +295,10 @@ const Projects = () => {
               }`}
               style={{ transitionDelay: '400ms' }}
             >
-              <span className="text-[#737373] dark:text-[#a3a3a3] text-sm font-medium uppercase tracking-wider">
+              <span className="text-[#F4A4A4] text-sm font-bold uppercase tracking-wider">
                 项目经历
               </span>
-              <h2 className="text-4xl md:text-5xl font-semibold text-[#171717] dark:text-[#fafafa] mt-2 tracking-tight">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#1A3C34] mt-2 tracking-tight">
                 竞赛经验积累
               </h2>
             </div>
@@ -309,34 +313,34 @@ const Projects = () => {
                   style={{ transitionDelay: `${480 + index * 80}ms` }}
                 >
                   <div
-                    className="relative bg-white dark:bg-[#171717] rounded-2xl overflow-hidden border border-[#e5e5e5] dark:border-[#262626] hover:border-[#404040] hover:-translate-y-0.5 transition-all duration-500 cursor-pointer h-full flex flex-col"
+                    className="relative bg-white rounded-3xl overflow-hidden border-2 border-[#F4A4A4]/10 hover:border-[#F4A4A4]/40 hover:-translate-y-0.5 transition-all duration-500 cursor-pointer h-full flex flex-col shadow-sm hover:shadow-lg"
                     onClick={() => setSelectedProject(project)}
                   >
                     <div className="grid grid-cols-1 gap-0">
                       <div className="p-6 md:p-8">
                         <div className="flex items-center gap-3 mb-4">
                           <div
-                            className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#e5e5e5] dark:bg-[#171717]"
+                            className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#FAF7F2] border-2 border-[#F4A4A4]/20"
                             style={{ color: project.color }}
                           >
                             <project.icon size={24} />
                           </div>
                           <div>
-                            <h3 className="text-xl font-semibold text-[#171717] dark:text-[#fafafa]">{project.title}</h3>
-                            <p className="text-sm font-medium text-[#737373] dark:text-[#a3a3a3]" style={{ color: project.color }}>
+                            <h3 className="text-xl font-bold text-[#1A3C34]">{project.title}</h3>
+                            <p className="text-sm font-bold text-[#F4A4A4]">
                               {project.subtitle}
                             </p>
                           </div>
                         </div>
 
-                        <p className="text-[#737373] dark:text-[#a3a3a3] text-sm mb-4">{project.time}</p>
-                        <p className="text-[#737373] dark:text-[#a3a3a3] text-[15px] leading-relaxed mb-6 line-clamp-3">
+                        <p className="text-[#1A3C34]/60 text-sm mb-4 font-medium">{project.time}</p>
+                        <p className="text-[#1A3C34]/70 text-[15px] leading-relaxed mb-6 line-clamp-3">
                           {project.description}
                         </p>
 
                         <div className="space-y-2 mb-6">
                           {project.achievements.slice(0, 3).map((achievement, i) => (
-                            <div key={i} className="flex items-center gap-2 text-sm text-[#737373] dark:text-[#a3a3a3]">
+                            <div key={i} className="flex items-center gap-2 text-sm text-[#1A3C34]/70">
                               <ChevronRight size={14} style={{ color: project.color }} />
                               <span>{achievement}</span>
                             </div>
@@ -347,14 +351,14 @@ const Projects = () => {
                           {project.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="px-3 py-1 text-xs rounded-full bg-[#e5e5e5] dark:bg-[#171717] text-[#737373] dark:text-[#a3a3a3]"
+                              className="px-3 py-1 text-xs rounded-full bg-[#FAF7F2] border border-[#F4A4A4]/20 text-[#1A3C34]/70 font-medium"
                             >
                               {tag}
                             </span>
                           ))}
                         </div>
                       </div>
-                      <div className="h-1 bg-white dark:bg-[#171717]" />
+                      <div className="h-1 bg-white" />
                     </div>
                   </div>
                 </div>
@@ -368,40 +372,40 @@ const Projects = () => {
         open={!!selectedProject}
         onOpenChange={() => setSelectedProject(null)}
       >
-        <DialogContent className="max-w-2xl bg-white dark:bg-[#171717] border-[#e5e5e5] dark:border-[#262626] text-[#171717] dark:text-[#fafafa] max-h-[90vh] overflow-y-auto shadow-lg rounded-2xl">
+        <DialogContent className="max-w-2xl bg-white border-2 border-[#F4A4A4]/20 text-[#1A3C34] max-h-[90vh] overflow-y-auto shadow-lg rounded-3xl">
           {selectedProject && (
             <>
               <DialogHeader>
                 <div className="flex items-center gap-3 mb-2">
                   <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#e5e5e5] dark:bg-[#171717]"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#FAF7F2] border-2 border-[#F4A4A4]/20"
                     style={{ color: selectedProject.color }}
                   >
                     <selectedProject.icon size={20} />
                   </div>
                   <div>
-                    <DialogTitle className="text-xl font-semibold text-[#171717] dark:text-[#fafafa]">
+                    <DialogTitle className="text-xl font-bold text-[#1A3C34]">
                       {selectedProject.title}
                     </DialogTitle>
-                    <p className="text-sm text-[#737373] dark:text-[#a3a3a3]" style={{ color: selectedProject.color }}>
+                    <p className="text-sm font-bold text-[#F4A4A4]">
                       {selectedProject.subtitle}
                     </p>
                   </div>
                 </div>
-                <DialogDescription className="text-[#737373] dark:text-[#a3a3a3]">
+                <DialogDescription className="text-[#1A3C34]/60">
                   {selectedProject.time}
                 </DialogDescription>
               </DialogHeader>
 
               <div className="mt-4">
-                <p className="text-[#737373] dark:text-[#a3a3a3] leading-relaxed mb-6 text-[15px]">
+                <p className="text-[#1A3C34]/70 leading-relaxed mb-6 text-[15px]">
                   {selectedProject.description}
                 </p>
 
-                <h4 className="text-lg font-semibold text-[#171717] dark:text-[#fafafa] mb-3">项目成果</h4>
+                <h4 className="text-lg font-bold text-[#1A3C34] mb-3">项目成果</h4>
                 <div className="space-y-2 mb-6">
                   {selectedProject.achievements.map((achievement, i) => (
-                    <div key={i} className="flex items-start gap-2 text-[#737373] dark:text-[#a3a3a3]">
+                    <div key={i} className="flex items-start gap-2 text-[#1A3C34]/70">
                       <ChevronRight
                         size={16}
                         className="mt-1 flex-shrink-0"
@@ -416,12 +420,28 @@ const Projects = () => {
                   {selectedProject.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 text-sm rounded-full bg-[#e5e5e5] dark:bg-[#171717] text-[#737373] dark:text-[#a3a3a3]"
+                      className="px-3 py-1 text-sm rounded-full bg-[#FAF7F2] border border-[#F4A4A4]/20 text-[#1A3C34]/70 font-medium"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
+
+                {'detailImages' in selectedProject && selectedProject.detailImages && selectedProject.detailImages.length > 0 && (
+                  <div className="mb-6">
+                    <h4 className="text-lg font-bold text-[#1A3C34] mb-3">产品截图</h4>
+                    <div className="space-y-4 max-h-[400px] overflow-y-auto">
+                      {selectedProject.detailImages.map((imgSrc, i) => (
+                        <img
+                          key={i}
+                          src={imgSrc}
+                          alt={`${selectedProject.title} - ${i + 1}`}
+                          className="w-full rounded-2xl border-2 border-[#F4A4A4]/10 shadow-sm"
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {(selectedProject.link || selectedProject.githubLink) && (
                   <div className="flex gap-3 flex-wrap">
@@ -430,7 +450,7 @@ const Projects = () => {
                         href={selectedProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-[#171717] dark:bg-white text-white dark:text-black hover:bg-[#262626] dark:hover:bg-[#e5e5e5] font-medium rounded-xl transition-colors"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-[#1A3C34] text-white hover:bg-[#F4A4A4] font-bold rounded-full transition-colors"
                       >
                         <ExternalLink size={18} />
                         访问产品
@@ -441,7 +461,7 @@ const Projects = () => {
                         href={selectedProject.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-[#171717] dark:bg-white text-white dark:text-black hover:bg-[#262626] dark:hover:bg-[#e5e5e5] font-medium rounded-xl transition-colors"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-[#FAF7F2] text-[#1A3C34] border-2 border-[#1A3C34] hover:bg-[#1A3C34] hover:text-white font-bold rounded-full transition-colors"
                       >
                         GitHub
                       </a>
