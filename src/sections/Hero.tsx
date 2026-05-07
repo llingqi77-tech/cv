@@ -31,7 +31,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#F4A4A4]/5 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full py-16 lg:py-0">
-        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center">
           {/* Left - Photo Card */}
           <div
             className={`relative transition-all duration-700 ease-out ${
@@ -39,38 +39,53 @@ const Hero = () => {
             }`}
             style={{ transitionDelay: '200ms' }}
           >
-            <div className="relative aspect-[2/3] max-w-sm mx-auto lg:mx-0">
-              <div className="relative h-full rounded-3xl overflow-hidden bg-[#F4A4A4]/20 border-4 border-[#F4A4A4]/30 shadow-lg">
-                <img
-                  src={assetUrl("/profile.webp")}
-                  alt="董璐瑶个人形象照"
-                  className="w-full h-full object-cover object-center"
-                  loading="lazy"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#1A3C34]/80 to-transparent">
-                  <div className="bg-white/95 backdrop-blur rounded-2xl p-4 border-2 border-[#F4A4A4]/20">
-                    <p className="text-sm text-[#1A3C34]/70 mb-1 font-medium">产品经理</p>
-                    <p className="text-lg font-bold text-[#1A3C34]">
-                      专注AI产品设计与数据驱动
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div className="relative aspect-[3/4] max-w-xs mx-auto lg:mx-0 lg:max-w-sm">
+              {/* 人物抠图：SVG滤镜清晰描边 */}
+              <img
+                src={assetUrl("/profile-cutout.png")}
+                alt="董璐瑶个人形象照"
+                className="relative w-full h-full object-contain object-bottom"
+                style={{ filter: 'url(#outline)' }}
+                loading="lazy"
+              />
+
+              {/* 跳跃标签 - 右上 */}
               <div
-                className={`absolute -top-3 -right-3 bg-[#F4A4A4] text-white rounded-full px-4 py-2 shadow-md transition-all duration-700 ${
+                className={`absolute top-6 -right-4 bg-white text-[#1A3C34] rounded-2xl px-4 py-2.5 shadow-lg border-2 border-[#F4A4A4]/30 transition-all duration-700 ${
                   loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                 }`}
-                style={{ transitionDelay: '300ms' }}
+                style={{
+                  transitionDelay: '300ms',
+                  animation: loaded ? 'float-tag-1 3s ease-in-out infinite' : 'none'
+                }}
               >
-                <span className="text-sm font-bold">3+ 实习经历</span>
+                <span className="text-sm font-bold">✨ 3+ 实习经历</span>
               </div>
+
+              {/* 跳跃标签 - 左下 */}
               <div
-                className={`absolute -bottom-3 -left-3 bg-[#1A3C34] text-white rounded-full px-4 py-2 shadow-md transition-all duration-700 ${
+                className={`absolute bottom-12 -left-6 bg-[#1A3C34] text-white rounded-2xl px-4 py-2.5 shadow-lg transition-all duration-700 ${
                   loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                 }`}
-                style={{ transitionDelay: '400ms' }}
+                style={{
+                  transitionDelay: '400ms',
+                  animation: loaded ? 'float-tag-2 2.5s ease-in-out infinite 0.5s' : 'none'
+                }}
               >
-                <span className="text-sm font-bold">国家级奖项</span>
+                <span className="text-sm font-bold">🏆 国家级奖项</span>
+              </div>
+
+              {/* 跳跃标签 - 右侧中部 */}
+              <div
+                className={`absolute top-1/3 -right-6 bg-[#F4A4A4] text-white rounded-full px-3 py-1.5 shadow-md transition-all duration-700 ${
+                  loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                }`}
+                style={{
+                  transitionDelay: '500ms',
+                  animation: loaded ? 'float-tag-3 3.5s ease-in-out infinite 1s' : 'none'
+                }}
+              >
+                <span className="text-xs font-bold">GPA 3.7</span>
               </div>
             </div>
           </div>
@@ -179,6 +194,37 @@ const Hero = () => {
           <ArrowDown size={20} className="animate-bounce" />
         </button>
       </div>
+
+      {/* SVG 滤镜：清晰轮廓描边 */}
+      <svg className="absolute w-0 h-0" aria-hidden="true">
+        <defs>
+          <filter id="outline" x="-20%" y="-20%" width="140%" height="140%">
+            <feMorphology in="SourceAlpha" result="DILATED" operator="dilate" radius="4"/>
+            <feFlood floodColor="#F4A4A4" floodOpacity="1" result="COLOR"/>
+            <feComposite in="COLOR" in2="DILATED" operator="in" result="OUTLINE"/>
+            <feMerge>
+              <feMergeNode in="OUTLINE"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+      </svg>
+
+      {/* 浮动动画关键帧 */}
+      <style>{`
+        @keyframes float-tag-1 {
+          0%, 100% { transform: translateY(0) rotate(-1deg); }
+          50% { transform: translateY(-12px) rotate(2deg); }
+        }
+        @keyframes float-tag-2 {
+          0%, 100% { transform: translateY(0) rotate(1deg); }
+          50% { transform: translateY(-8px) rotate(-2deg); }
+        }
+        @keyframes float-tag-3 {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-10px) rotate(3deg); }
+        }
+      `}</style>
     </section>
   );
 };

@@ -149,14 +149,14 @@ const Works = () => {
               style={{ transitionDelay: `${200 + index * 100}ms` }}
             >
               <div
-                className="relative bg-[#FAF7F2] rounded-3xl overflow-hidden border-2 border-[#F4A4A4]/10 hover:border-[#F4A4A4]/40 hover:-translate-y-0.5 transition-all duration-500 cursor-pointer h-full flex flex-col shadow-sm hover:shadow-lg"
+                className="relative bg-[#FAF7F2] rounded-3xl overflow-hidden border-2 border-[#F4A4A4]/10 hover:border-[#F4A4A4]/40 transition-all duration-500 cursor-pointer h-full flex flex-col shadow-sm hover:shadow-xl"
                 onClick={() => setSelectedWork(work)}
               >
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={work.image}
                     alt={`${work.title} 封面图`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
@@ -197,7 +197,7 @@ const Works = () => {
 
                   <div className="flex items-center gap-1 text-sm font-bold" style={{ color: work.color }}>
                     <span>查看详情</span>
-                    <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight size={14} />
                   </div>
                 </div>
               </div>
