@@ -3,14 +3,6 @@ import { ExternalLink, Trophy, BarChart3, Users, Sparkles, Compass, ChevronRight
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { assetUrl } from '@/lib/utils';
 
-const FILTER_CATEGORIES = ['全部', 'AI产品', '产品设计', '数据分析', '市场研究'] as const;
-const CATEGORY_TAG_MAP: Record<string, string[]> = {
-  'AI产品': ['AI产品', 'AI Agent', 'Coze', '0-1产品', 'Vibe Coding', '独立开发'],
-  '产品设计': ['产品设计', '用户调研', '创新挑战'],
-  '数据分析': ['数据分析', '社会网络', '可视化'],
-  '市场研究': ['市场研究', '数据爬取', 'A/B测试'],
-};
-
 const projects = [
   {
     id: 1,
@@ -27,13 +19,12 @@ const projects = [
       'Vercel + 阿里云域名部署上线',
     ],
     tags: ['AI产品', 'Vibe Coding', 'Vercel', '独立开发'],
-    color: '#F4A4A4',
+    color: '#F06292',
+    bgColor: '#FCE4EC',
     icon: Users,
     featured: true,
     previewImage: assetUrl('/interview-landing.webp'),
-    detailImages: [
-      assetUrl('/interview-app.webp'),
-    ],
+    detailImages: [assetUrl('/interview-app.webp')],
     link: 'https://www.groupinterview.online/',
     githubLink: 'https://github.com/llingqi77-tech/interview-second',
     hasVideo: true,
@@ -52,10 +43,10 @@ const projects = [
       '角色设定与回答限制',
     ],
     tags: ['Coze', 'AI Agent', '旅行规划', '0-1产品'],
-    color: '#1A3C34',
+    color: '#42A5F5',
+    bgColor: '#E3F2FD',
     icon: Compass,
-    featured: false,
-    showImageLayout: true,
+    featured: true,
     previewImage: assetUrl('/travel.webp'),
     link: 'https://www.coze.cn/s/baXCo8B2eYQ/',
     image: assetUrl('/travel.webp'),
@@ -74,7 +65,8 @@ const projects = [
       '解决山区等复杂环境网络不通问题',
     ],
     tags: ['产品设计', '用户调研', '创新挑战'],
-    color: '#F4A4A4',
+    color: '#66BB6A',
+    bgColor: '#E8F5E9',
     icon: Trophy,
     featured: false,
   },
@@ -92,7 +84,8 @@ const projects = [
       '覆盖超千万流动数据',
     ],
     tags: ['数据分析', '社会网络', '可视化'],
-    color: '#1A3C34',
+    color: '#42A5F5',
+    bgColor: '#E3F2FD',
     icon: BarChart3,
     featured: false,
   },
@@ -110,7 +103,8 @@ const projects = [
       'A/B实验测试抖音视频流量',
     ],
     tags: ['市场研究', '数据爬取', 'A/B测试'],
-    color: '#F4A4A4',
+    color: '#F06292',
+    bgColor: '#FCE4EC',
     icon: Sparkles,
     featured: false,
   },
@@ -119,17 +113,7 @@ const projects = [
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
-  const [activeFilter] = useState<(typeof FILTER_CATEGORIES)[number]>('全部');
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
-
-  const filteredProjects = activeFilter === '全部'
-    ? projects
-    : projects.filter((p) =>
-        p.tags.some((tag) => CATEGORY_TAG_MAP[activeFilter]?.includes(tag))
-      );
-
-  const featuredFiltered = filteredProjects.filter((p) => p.featured || p.title === '旅游智能体');
-  const restFiltered = filteredProjects.filter((p) => !p.featured && p.title !== '旅游智能体');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -153,225 +137,97 @@ const Projects = () => {
     <section
       id="projects"
       ref={sectionRef}
-      className="relative py-20 md:py-24 lg:py-32 overflow-hidden bg-[#FAF7F2]"
+      className="relative py-20 md:py-24 lg:py-32 overflow-hidden bg-white grid-bg"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Section Header */}
         <div
-          className={`mb-10 transition-all duration-700 ${
+          className={`mb-14 transition-all duration-700 ${
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <span className="text-[#F4A4A4] text-sm font-bold uppercase tracking-wider">
+          <span className="text-[#F06292] text-sm font-bold uppercase tracking-wider">
             项目经历
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-[#1A3C34] mt-2 tracking-tight">
-            从0到1创造
+            从<span className="mark-pink">0到1</span>创造
           </h2>
         </div>
 
-        {filteredProjects.length === 0 && (
-          <p className="text-[#1A3C34]/60 text-center py-12">暂无匹配项目</p>
-        )}
-
-        {featuredFiltered.length > 0 && (
-        <div className="grid md:grid-cols-2 gap-6">
-          {featuredFiltered.map((project, index) => {
-            const previewImg = 'previewImage' in project ? project.previewImage : assetUrl('/interview.webp');
-            const isTravelAgent = project.title === '旅游智能体';
-            const imageFirst = isTravelAgent;
-            return (
+        {/* 彩色卡片网格 */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, index) => (
+            <div
+              key={project.id}
+              className={`group transition-all duration-700 ${
+                visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+              }`}
+              style={{ transitionDelay: `${200 + index * 100}ms` }}
+            >
               <div
-                key={project.id}
-                className={`group transition-all duration-700 ${
-                  visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                } md:col-span-2`}
-                style={{ transitionDelay: `${200 + index * 80}ms` }}
+                className="relative rounded-[2rem] overflow-hidden cursor-pointer h-full flex flex-col transition-all duration-500 hover:-translate-y-2 shadow-sm hover:shadow-xl"
+                style={{ backgroundColor: project.bgColor }}
+                onClick={() => setSelectedProject(project)}
               >
-                <div
-                  className="relative bg-white rounded-3xl overflow-hidden border-2 border-[#F4A4A4]/10 hover:border-[#F4A4A4]/40 hover:-translate-y-0.5 transition-all duration-500 cursor-pointer h-full flex flex-col shadow-sm hover:shadow-lg"
-                  onClick={() => setSelectedProject(project)}
-                >
-                  {project.featured && (
-                    <div className="absolute top-4 right-4 z-10 px-3 py-1.5 bg-[#F4A4A4] text-white text-xs font-bold rounded-full">
-                      重点项目
-                    </div>
-                  )}
-
-                  <div className={`grid gap-0 ${imageFirst ? 'lg:grid-cols-[1.2fr,1fr]' : 'lg:grid-cols-[1fr,1.2fr]'}`}>
-                    {imageFirst && (
-                      <div className="relative min-h-[270px] flex items-center justify-center overflow-hidden order-1">
-                        <img src={previewImg} alt={project.title} className="w-full h-full object-cover" />
-                      </div>
-                    )}
-                    <div className={`p-6 md:p-8 flex flex-col ${imageFirst ? 'order-2' : 'order-1'}`}>
-                      <div className="flex items-center gap-3 mb-4">
-                        <div
-                          className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#FAF7F2] border-2 border-[#F4A4A4]/20"
-                          style={{ color: project.color }}
-                        >
-                          <project.icon size={24} />
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-bold text-[#1A3C34]">{project.title}</h3>
-                          <p className="text-sm font-bold text-[#F4A4A4]">
-                            {project.subtitle}
-                          </p>
-                        </div>
-                      </div>
-
-                      <p className="text-[#1A3C34]/60 text-sm mb-4 font-medium">{project.time}</p>
-                      <p className="text-[#1A3C34]/70 text-[15px] leading-relaxed mb-6 line-clamp-3">
-                        {project.description}
-                      </p>
-
-                      <div className="space-y-2 mb-6">
-                        {project.achievements.slice(0, 3).map((achievement, i) => (
-                          <div key={i} className="flex items-center gap-2 text-sm text-[#1A3C34]/70">
-                            <ChevronRight size={14} style={{ color: project.color }} />
-                            <span>{achievement}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-3 py-1 text-xs rounded-full bg-[#FAF7F2] border border-[#F4A4A4]/20 text-[#1A3C34]/70 font-medium"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="mt-auto pt-6 flex flex-col items-end gap-2 text-right">
-                        {(project.link || ('githubLink' in project && project.githubLink)) && (
-                          <div className="flex gap-3 justify-end flex-wrap">
-                            {project.link && (
-                              <a
-                                href={project.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1A3C34] text-white hover:bg-[#F4A4A4] text-sm font-bold rounded-full transition-colors"
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                <ExternalLink size={14} />
-                                访问产品
-                              </a>
-                            )}
-                            {'githubLink' in project && project.githubLink && (
-                              <a
-                                href={project.githubLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FAF7F2] text-[#1A3C34] border-2 border-[#1A3C34] hover:bg-[#1A3C34] hover:text-white text-sm font-bold rounded-full transition-colors"
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                GitHub
-                              </a>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    {!imageFirst && (
-                      <div className="relative min-h-[270px] flex items-center justify-center overflow-hidden order-2">
-                        <img src={previewImg} alt={project.title} className="w-full h-full object-cover" />
+                {/* 图片区域 */}
+                {project.previewImage ? (
+                  <div className="relative h-52 overflow-hidden">
+                    <img
+                      src={project.previewImage}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {project.featured && (
+                      <div className="absolute top-4 right-4 px-3 py-1.5 text-white text-xs font-bold rounded-full shadow-md"
+                        style={{ backgroundColor: project.color }}>
+                        重点项目
                       </div>
                     )}
                   </div>
+                ) : (
+                  <div className="relative h-40 flex items-center justify-center" style={{ backgroundColor: `${project.color}15` }}>
+                    <project.icon size={48} style={{ color: project.color, opacity: 0.6 }} />
+                  </div>
+                )}
+
+                {/* 内容区域 */}
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-xl font-bold text-[#1A3C34] mb-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm font-bold mb-3" style={{ color: project.color }}>
+                    {project.subtitle}
+                  </p>
+                  <p className="text-[#1A3C34]/70 text-sm leading-relaxed mb-6 line-clamp-3 flex-1">
+                    {project.description}
+                  </p>
+
+                  {/* 标签 */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2.5 py-1 text-xs rounded-full bg-white/80 text-[#1A3C34]/70 font-medium"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* 按钮 */}
+                  <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-full text-sm font-bold text-[#1A3C34] shadow-sm hover:shadow-md transition-all self-start">
+                    <span className="w-2 h-2 rounded-full" style={{ backgroundColor: project.color }}></span>
+                    查看详情
+                  </button>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
-        )}
-
-          {/* 竞赛经验积累 */}
-          {restFiltered.length > 0 && (
-          <div className="md:col-span-2 mt-4">
-            <div
-              className={`mb-14 transition-all duration-700 ${
-                visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: '400ms' }}
-            >
-              <span className="text-[#F4A4A4] text-sm font-bold uppercase tracking-wider">
-                项目经历
-              </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-[#1A3C34] mt-2 tracking-tight">
-                竞赛经验积累
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {restFiltered.map((project, index) => (
-                <div
-                  key={project.id}
-                  className={`group transition-all duration-700 ${
-                    visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                  }`}
-                  style={{ transitionDelay: `${480 + index * 80}ms` }}
-                >
-                  <div
-                    className="relative bg-white rounded-3xl overflow-hidden border-2 border-[#F4A4A4]/10 hover:border-[#F4A4A4]/40 hover:-translate-y-0.5 transition-all duration-500 cursor-pointer h-full flex flex-col shadow-sm hover:shadow-lg"
-                    onClick={() => setSelectedProject(project)}
-                  >
-                    <div className="grid grid-cols-1 gap-0">
-                      <div className="p-6 md:p-8">
-                        <div className="flex items-center gap-3 mb-4">
-                          <div
-                            className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#FAF7F2] border-2 border-[#F4A4A4]/20"
-                            style={{ color: project.color }}
-                          >
-                            <project.icon size={24} />
-                          </div>
-                          <div>
-                            <h3 className="text-xl font-bold text-[#1A3C34]">{project.title}</h3>
-                            <p className="text-sm font-bold text-[#F4A4A4]">
-                              {project.subtitle}
-                            </p>
-                          </div>
-                        </div>
-
-                        <p className="text-[#1A3C34]/60 text-sm mb-4 font-medium">{project.time}</p>
-                        <p className="text-[#1A3C34]/70 text-[15px] leading-relaxed mb-6 line-clamp-3">
-                          {project.description}
-                        </p>
-
-                        <div className="space-y-2 mb-6">
-                          {project.achievements.slice(0, 3).map((achievement, i) => (
-                            <div key={i} className="flex items-center gap-2 text-sm text-[#1A3C34]/70">
-                              <ChevronRight size={14} style={{ color: project.color }} />
-                              <span>{achievement}</span>
-                            </div>
-                          ))}
-                        </div>
-
-                        <div className="flex flex-wrap gap-2">
-                          {project.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-3 py-1 text-xs rounded-full bg-[#FAF7F2] border border-[#F4A4A4]/20 text-[#1A3C34]/70 font-medium"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="h-1 bg-white" />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          )}
       </div>
 
-      <Dialog
-        open={!!selectedProject}
-        onOpenChange={() => setSelectedProject(null)}
-      >
+      {/* Dialog */}
+      <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
         <DialogContent className="max-w-2xl bg-white border-2 border-[#F4A4A4]/20 text-[#1A3C34] max-h-[90vh] overflow-y-auto shadow-lg rounded-3xl">
           {selectedProject && (
             <>
@@ -387,7 +243,7 @@ const Projects = () => {
                     <DialogTitle className="text-xl font-bold text-[#1A3C34]">
                       {selectedProject.title}
                     </DialogTitle>
-                    <p className="text-sm font-bold text-[#F4A4A4]">
+                    <p className="text-sm font-bold" style={{ color: selectedProject.color }}>
                       {selectedProject.subtitle}
                     </p>
                   </div>
@@ -398,6 +254,14 @@ const Projects = () => {
               </DialogHeader>
 
               <div className="mt-4">
+                {selectedProject.previewImage && (
+                  <img
+                    src={selectedProject.previewImage}
+                    alt={selectedProject.title}
+                    className="w-full h-48 object-cover rounded-2xl mb-6"
+                  />
+                )}
+
                 <p className="text-[#1A3C34]/70 leading-relaxed mb-6 text-[15px]">
                   {selectedProject.description}
                 </p>
@@ -427,47 +291,29 @@ const Projects = () => {
                   ))}
                 </div>
 
-                {'detailImages' in selectedProject && selectedProject.detailImages && selectedProject.detailImages.length > 0 && (
-                  <div className="mb-6">
-                    <h4 className="text-lg font-bold text-[#1A3C34] mb-3">产品截图</h4>
-                    <div className="space-y-4 max-h-[400px] overflow-y-auto">
-                      {selectedProject.detailImages.map((imgSrc, i) => (
-                        <img
-                          key={i}
-                          src={imgSrc}
-                          alt={`${selectedProject.title} - ${i + 1}`}
-                          className="w-full rounded-2xl border-2 border-[#F4A4A4]/10 shadow-sm"
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {(selectedProject.link || selectedProject.githubLink) && (
-                  <div className="flex gap-3 flex-wrap">
-                    {selectedProject.link && selectedProject.title !== '旅游智能体' && (
-                      <a
-                        href={selectedProject.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-[#1A3C34] text-white hover:bg-[#F4A4A4] font-bold rounded-full transition-colors"
-                      >
-                        <ExternalLink size={18} />
-                        访问产品
-                      </a>
-                    )}
-                    {selectedProject.githubLink && (
-                      <a
-                        href={selectedProject.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-[#FAF7F2] text-[#1A3C34] border-2 border-[#1A3C34] hover:bg-[#1A3C34] hover:text-white font-bold rounded-full transition-colors"
-                      >
-                        GitHub
-                      </a>
-                    )}
-                  </div>
-                )}
+                <div className="flex gap-3 flex-wrap">
+                  {selectedProject.link && (
+                    <a
+                      href={selectedProject.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#1A3C34] text-white hover:bg-[#F4A4A4] font-bold rounded-full transition-colors"
+                    >
+                      <ExternalLink size={18} />
+                      访问产品
+                    </a>
+                  )}
+                  {selectedProject.githubLink && (
+                    <a
+                      href={selectedProject.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#FAF7F2] text-[#1A3C34] border-2 border-[#1A3C34] hover:bg-[#1A3C34] hover:text-white font-bold rounded-full transition-colors"
+                    >
+                      GitHub
+                    </a>
+                  )}
+                </div>
               </div>
             </>
           )}

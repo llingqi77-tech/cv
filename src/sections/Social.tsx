@@ -68,11 +68,11 @@ const Social = () => {
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <span className="text-[#F4A4A4] text-sm font-bold uppercase tracking-wider">
+          <span className="text-[#F06292] text-sm font-bold uppercase tracking-wider">
             社交媒体
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-[#1A3C34] mt-2 tracking-tight">
-            内容创作与分享
+            内容<span className="mark-green">创作</span>与分享
           </h2>
         </div>
 

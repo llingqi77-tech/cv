@@ -23,14 +23,26 @@
     --ring: 0 0% 9%;
     --radius: 1rem;
 
-    /* Unified Pink + Green theme */
+    /* Pretty Little Marketer 风格配色 */
+    --pink-light: #FCE4EC;
+    --pink-medium: #F8BBD0;
+    --pink-accent: #F06292;
+    --blue-light: #E3F2FD;
+    --blue-medium: #BBDEFB;
+    --blue-accent: #42A5F5;
+    --green-light: #E8F5E9;
+    --green-medium: #C8E6C9;
+    --green-accent: #66BB6A;
+    --cream: #FAF7F2;
+    --charcoal: #1A3C34;
+    --soft-pink: #F4A4A4;
+
+    /* Legacy */
     --page-bg: #FAF7F2;
     --page-bg-alt: #ffffff;
     --text-primary: #1A3C34;
     --text-secondary: #1A3C34;
     --bg-subtle: #F4A4A4;
-    --charcoal: #1A3C34;
-    --soft-gray: #F4A4A4;
     --shadow-card: 0 1px 3px rgba(26, 60, 52, 0.06);
     --shadow-card-hover: 0 4px 12px rgba(26, 60, 52, 0.08);
     --ease-warm: cubic-bezier(0.4, 0, 0.2, 1);
@@ -48,8 +60,8 @@
 
   body {
     @apply antialiased;
-    background-color: var(--page-bg);
-    color: var(--text-primary);
+    background-color: var(--cream);
+    color: var(--charcoal);
     font-family: "Inter", "Outfit", "Poppins", sans-serif;
     font-size: 16px;
     line-height: 1.7;
@@ -100,18 +112,85 @@
     background-image: linear-gradient(90deg, #1A3C34 0%, #F4A4A4 100%);
   }
 
-  .glass-effect {
-    @apply backdrop-blur-xl;
-    background: rgba(250, 247, 242, 0.9);
-    border: 1px solid #F4A4A4;
-    box-shadow: var(--shadow-card);
+  /* 网格底线背景 */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(26, 60, 52, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26, 60, 52, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
   }
 
-  .warm-card {
-    background: var(--page-bg-alt);
-    border-radius: 16px;
-    box-shadow: var(--shadow-card);
-    border: 1px solid #F4A4A4;
+  .grid-bg-pink {
+    background-image:
+      linear-gradient(rgba(240, 98, 146, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(240, 98, 146, 0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* 彩色文字标记 */
+  .mark-pink {
+    background: linear-gradient(180deg, transparent 55%, rgba(240, 98, 146, 0.35) 55%, rgba(240, 98, 146, 0.35) 85%, transparent 85%);
+    padding: 0 0.15em;
+  }
+
+  .mark-blue {
+    background: linear-gradient(180deg, transparent 55%, rgba(66, 165, 245, 0.35) 55%, rgba(66, 165, 245, 0.35) 85%, transparent 85%);
+    padding: 0 0.15em;
+  }
+
+  .mark-green {
+    background: linear-gradient(180deg, transparent 55%, rgba(102, 187, 106, 0.35) 55%, rgba(102, 187, 106, 0.35) 85%, transparent 85%);
+    padding: 0 0.15em;
+  }
+
+  .mark-yellow {
+    background: linear-gradient(180deg, transparent 55%, rgba(255, 213, 79, 0.4) 55%, rgba(255, 213, 79, 0.4) 85%, transparent 85%);
+    padding: 0 0.15em;
+  }
+
+  /* 滚动渐入动画 */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s var(--ease-warm), transform 0.7s var(--ease-warm);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.7s var(--ease-warm), transform 0.7s var(--ease-warm);
+  }
+
+  .reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.7s var(--ease-warm), transform 0.7s var(--ease-warm);
+  }
+
+  .reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.7s var(--ease-warm), transform 0.7s var(--ease-warm);
+  }
+
+  .reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 

@@ -48,7 +48,7 @@ const Contact = () => {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative py-20 md:py-24 lg:py-32 overflow-hidden bg-white"
+      className="relative py-20 md:py-24 lg:py-32 overflow-hidden bg-[#FAF7F2] grid-bg"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div
@@ -56,11 +56,11 @@ const Contact = () => {
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <span className="text-[#F4A4A4] text-sm font-bold uppercase tracking-wider">
+          <span className="text-[#F06292] text-sm font-bold uppercase tracking-wider">
             联系我
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-[#1A3C34] mt-2 mb-4 tracking-tight">
-            有有趣的项目？让我们聊聊
+            有趣的<span className="mark-pink">项目</span>？让我们聊聊
           </h2>
           <p className="text-[#1A3C34]/60 max-w-xl mx-auto text-[17px] font-medium">
             无论是产品合作、实习机会，还是单纯想交流产品心得，都欢迎联系我

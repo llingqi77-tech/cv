@@ -7,7 +7,6 @@ const Experience = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [visible, setVisible] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -98,7 +97,7 @@ const Experience = () => {
     <section
       id="experience"
       ref={sectionRef}
-      className="relative py-20 md:py-24 lg:py-32 overflow-hidden bg-white"
+      className="relative py-20 md:py-24 lg:py-32 overflow-hidden bg-[#FAF7F2] grid-bg"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div
@@ -106,11 +105,11 @@ const Experience = () => {
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <span className="text-[#F4A4A4] text-sm font-bold uppercase tracking-wider">
+          <span className="text-[#F06292] text-sm font-bold uppercase tracking-wider">
             实习经历
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-[#1A3C34] mt-2 tracking-tight">
-            实战经验积累
+            实战经验<span className="mark-blue">积累</span>
           </h2>
         </div>
 
@@ -122,21 +121,14 @@ const Experience = () => {
                 visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
               style={{ transitionDelay: `${200 + index * 100}ms` }}
-              onMouseEnter={() => setActiveIndex(index)}
             >
-              <div
-                className={`relative bg-[#FAF7F2] rounded-3xl overflow-hidden transition-all duration-500 border-2 ${
-                  activeIndex === index
-                    ? 'shadow-lg border-[#F4A4A4]/40 -translate-y-0.5'
-                    : 'border-[#F4A4A4]/10 hover:border-[#F4A4A4]/40 hover:-translate-y-0.5'
-                }`}
-              >
+              <div className="relative bg-white rounded-3xl overflow-hidden border-2 border-[#F4A4A4]/10 hover:border-[#F4A4A4]/40 hover:shadow-lg transition-all duration-500">
                 <div className="grid lg:grid-cols-[1fr,1.2fr] gap-0">
                   <div className="p-8">
                     <div className="flex items-start justify-between mb-4">
                       <div>
                         <h3 className="text-2xl font-bold text-[#1A3C34] mb-1">{exp.company}</h3>
-                        <p className="text-[#F4A4A4] font-bold">{exp.position}</p>
+                        <p className="text-[#F06292] font-bold">{exp.position}</p>
                       </div>
                     </div>
 
@@ -173,7 +165,7 @@ const Experience = () => {
                       <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <button
                           onClick={toggleVideo}
-                          className="w-16 h-16 rounded-full bg-[#F4A4A4] hover:bg-[#F4A4A4]/90 flex items-center justify-center transition-all shadow-lg"
+                          className="w-16 h-16 rounded-full bg-[#F06292] hover:bg-[#F06292]/90 flex items-center justify-center transition-all shadow-lg"
                         >
                           {isPlaying ? (
                             <Pause size={28} className="text-white" />
