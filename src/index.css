@@ -23,15 +23,15 @@
     --ring: 0 0% 9%;
     --radius: 1rem;
 
-    /* Pretty Little Marketer 风格配色 */
-    --pink-light: #FCE4EC;
-    --pink-medium: #F8BBD0;
-    --pink-accent: #F06292;
-    --blue-light: #E3F2FD;
-    --blue-medium: #BBDEFB;
-    --blue-accent: #42A5F5;
-    --green-light: #E8F5E9;
-    --green-medium: #C8E6C9;
+    /* Pretty Little Marketer 风格配色 - 鲜艳色调 */
+    --pink-light: #FFB6C1;
+    --pink-medium: #FF6B9D;
+    --pink-accent: #FF6B9D;
+    --blue-light: #87CEEB;
+    --blue-medium: #4A90E2;
+    --blue-accent: #4A90E2;
+    --green-light: #98FB98;
+    --green-medium: #66BB6A;
     --green-accent: #66BB6A;
     --cream: #FAF7F2;
     --charcoal: #1A3C34;
@@ -127,24 +127,24 @@
     background-size: 60px 60px;
   }
 
-  /* 彩色文字标记 */
+  /* 彩色文字标记 - 鲜艳色调 */
   .mark-pink {
-    background: linear-gradient(180deg, transparent 55%, rgba(240, 98, 146, 0.35) 55%, rgba(240, 98, 146, 0.35) 85%, transparent 85%);
+    background: linear-gradient(180deg, transparent 55%, rgba(255, 107, 157, 0.45) 55%, rgba(255, 107, 157, 0.45) 85%, transparent 85%);
     padding: 0 0.15em;
   }
 
   .mark-blue {
-    background: linear-gradient(180deg, transparent 55%, rgba(66, 165, 245, 0.35) 55%, rgba(66, 165, 245, 0.35) 85%, transparent 85%);
+    background: linear-gradient(180deg, transparent 55%, rgba(74, 144, 226, 0.45) 55%, rgba(74, 144, 226, 0.45) 85%, transparent 85%);
     padding: 0 0.15em;
   }
 
   .mark-green {
-    background: linear-gradient(180deg, transparent 55%, rgba(102, 187, 106, 0.35) 55%, rgba(102, 187, 106, 0.35) 85%, transparent 85%);
+    background: linear-gradient(180deg, transparent 55%, rgba(102, 187, 106, 0.45) 55%, rgba(102, 187, 106, 0.45) 85%, transparent 85%);
     padding: 0 0.15em;
   }
 
   .mark-yellow {
-    background: linear-gradient(180deg, transparent 55%, rgba(255, 213, 79, 0.4) 55%, rgba(255, 213, 79, 0.4) 85%, transparent 85%);
+    background: linear-gradient(180deg, transparent 55%, rgba(255, 213, 79, 0.5) 55%, rgba(255, 213, 79, 0.5) 85%, transparent 85%);
     padding: 0 0.15em;
   }
 

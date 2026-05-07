@@ -40,8 +40,8 @@ const Works = () => {
         '投放总播放量4937，总点赞量509',
       ],
       tags: ['4P营销', '短视频运营', 'VIS设计', '增长飞轮'],
-      color: '#F06292',
-      bgColor: '#FCE4EC',
+      color: '#FF6B9D',
+      bgColor: '#FFB6C1',
       markClass: 'mark-pink',
       icon: TrendingUp,
       image: assetUrl('/Enjoy This Moment-早康枸杞原浆大学生市场营销策略研究_01.webp'),
@@ -78,8 +78,8 @@ const Works = () => {
         '设置人格配对、社交活动，增强情感连接',
       ],
       tags: ['MBTI营销', 'IP联名', '线上线下联动', '社交活动'],
-      color: '#42A5F5',
-      bgColor: '#E3F2FD',
+      color: '#4A90E2',
+      bgColor: '#87CEEB',
       markClass: 'mark-blue',
       icon: Users,
       image: assetUrl('/世界缤纷果真懂你-副本_01.webp'),
@@ -108,7 +108,7 @@ const Works = () => {
       ],
       tags: ['可持续包装', '环保材料', 'ESG', '创新设计'],
       color: '#66BB6A',
-      bgColor: '#E8F5E9',
+      bgColor: '#98FB98',
       markClass: 'mark-green',
       icon: Leaf,
       image: assetUrl('/defu/幻灯片32.webp'),
@@ -135,7 +135,7 @@ const Works = () => {
               visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <span className="text-[#F06292] text-sm font-bold uppercase tracking-wider">
+            <span className="text-[#FF6B9D] text-sm font-bold uppercase tracking-wider">
               商赛作品
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-[#1A3C34] mt-2 tracking-tight">
@@ -145,80 +145,91 @@ const Works = () => {
         </div>
       </div>
 
-      {/* 三个作品 - 全宽彩色交错区块 */}
-      {works.map((work, index) => (
-        <div
-          key={work.id}
-          className="py-20 md:py-28 transition-colors"
-          style={{ backgroundColor: work.bgColor }}
-        >
-          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              {/* 图片 */}
-              <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                  <img
-                    src={work.image}
-                    alt={`${work.title} 封面图`}
-                    className="w-full h-auto object-cover"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              {/* 内容 */}
-              <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                {/* 奖项标签 */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur rounded-full shadow-sm mb-6">
-                  <Award size={16} style={{ color: work.color }} />
-                  <span className="text-sm font-bold text-[#1A3C34]">{work.award}</span>
-                </div>
-
-                {/* 标题 */}
-                <h3 className="text-3xl md:text-4xl font-bold text-[#1A3C34] mb-4 leading-tight">
-                  <span className={work.markClass}>{work.title}</span>
-                </h3>
-
-                {/* 描述 */}
-                <p className="text-[#1A3C34]/70 text-lg leading-relaxed mb-8">
-                  {work.description}
-                </p>
-
-                {/* 亮点 */}
-                <div className="space-y-3 mb-8">
-                  {work.highlights.map((highlight, i) => (
-                    <div key={i} className="flex items-start gap-3 text-[#1A3C34]/80">
-                      <ChevronRight size={18} className="mt-0.5 flex-shrink-0" style={{ color: work.color }} />
-                      <span className="text-[15px] leading-relaxed">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* 标签 */}
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {work.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 text-sm rounded-full bg-white/70 text-[#1A3C34]/70 font-medium"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* 按钮 */}
-                <button
+      {/* 三个作品 - 紧凑卡片布局 */}
+      <div className="py-16 md:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid md:grid-cols-3 gap-6">
+            {works.map((work, index) => (
+              <div
+                key={work.id}
+                className={`group transition-all duration-700 ${
+                  visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                }`}
+                style={{ transitionDelay: `${200 + index * 100}ms` }}
+              >
+                <div
+                  className="relative bg-white rounded-3xl overflow-hidden border-2 h-full flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-xl cursor-pointer"
+                  style={{ borderColor: `${work.color}30` }}
                   onClick={() => setSelectedWork(work)}
-                  className="group inline-flex items-center gap-2 px-6 py-3 bg-[#1A3C34] text-white rounded-full font-bold transition-all hover:bg-[#F06292] shadow-lg"
                 >
-                  <span>查看详情</span>
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </button>
+                  {/* 图片 */}
+                  <div className="relative h-48 overflow-hidden bg-[#FAF7F2]">
+                    <img
+                      src={work.image}
+                      alt={`${work.title} 封面图`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* 内容 */}
+                  <div className="p-6 flex flex-col flex-1">
+                    {/* 奖项标签 */}
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#FAF7F2] rounded-full mb-4 w-fit">
+                      <Award size={14} style={{ color: work.color }} />
+                      <span className="text-xs font-bold text-[#1A3C34]">{work.award}</span>
+                    </div>
+
+                    {/* 标题 */}
+                    <h3 className="text-xl font-bold text-[#1A3C34] mb-2 leading-tight">
+                      <span className={work.markClass}>{work.title}</span>
+                    </h3>
+
+                    {/* 描述 */}
+                    <p className="text-[#1A3C34]/60 text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
+                      {work.description}
+                    </p>
+
+                    {/* 亮点 */}
+                    <div className="space-y-2 mb-4">
+                      {work.highlights.slice(0, 2).map((highlight, i) => (
+                        <div key={i} className="flex items-start gap-2 text-sm text-[#1A3C34]/70">
+                          <ChevronRight size={14} className="mt-0.5 flex-shrink-0" style={{ color: work.color }} />
+                          <span className="line-clamp-2">{highlight}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* 标签 */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {work.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2.5 py-1 text-xs rounded-full bg-[#FAF7F2] text-[#1A3C34]/60 font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* 查看详情按钮 */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedWork(work);
+                      }}
+                      className="group/btn inline-flex items-center gap-2 px-4 py-2 bg-[#1A3C34] text-white rounded-full text-sm font-bold transition-all hover:bg-[#FF6B9D] shadow-lg mt-auto w-fit"
+                    >
+                      <span>查看详情</span>
+                      <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
-      ))}
+      </div>
 
       {/* Dialog */}
       <Dialog open={!!selectedWork} onOpenChange={() => setSelectedWork(null)}>

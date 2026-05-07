@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Calendar, MapPin, ChevronRight, Play, Pause } from 'lucide-react';
+import { Calendar, MapPin, ChevronRight, Play, Pause, X, ChevronLeft } from 'lucide-react';
 import { assetUrl } from '@/lib/utils';
 
 const Experience = () => {
@@ -7,6 +7,27 @@ const Experience = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [visible, setVisible] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [lightboxImages, setLightboxImages] = useState<{src: string; label: string}[]>([]);
+
+  const openLightbox = (images: {src: string; label: string}[], index: number) => {
+    setLightboxImages(images);
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
+
+  const prevImage = () => {
+    setLightboxIndex((prev) => (prev === 0 ? lightboxImages.length - 1 : prev - 1));
+  };
+
+  const nextImage = () => {
+    setLightboxIndex((prev) => (prev === lightboxImages.length - 1 ? 0 : prev + 1));
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -105,7 +126,7 @@ const Experience = () => {
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <span className="text-[#F06292] text-sm font-bold uppercase tracking-wider">
+          <span className="text-[#FF6B9D] text-sm font-bold uppercase tracking-wider">
             实习经历
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-[#1A3C34] mt-2 tracking-tight">
@@ -128,7 +149,7 @@ const Experience = () => {
                     <div className="flex items-start justify-between mb-4">
                       <div>
                         <h3 className="text-2xl font-bold text-[#1A3C34] mb-1">{exp.company}</h3>
-                        <p className="text-[#F06292] font-bold">{exp.position}</p>
+                        <p className="text-[#FF6B9D] font-bold">{exp.position}</p>
                       </div>
                     </div>
 
@@ -158,14 +179,16 @@ const Experience = () => {
                       <video
                         ref={videoRef}
                         src={assetUrl("/hero.mp4")}
+                        poster={assetUrl("/pitchlab/3.webp")}
                         className="w-full h-full object-cover"
                         loop
                         playsInline
+                        preload="metadata"
                       />
                       <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <button
                           onClick={toggleVideo}
-                          className="w-16 h-16 rounded-full bg-[#F06292] hover:bg-[#F06292]/90 flex items-center justify-center transition-all shadow-lg"
+                          className="w-16 h-16 rounded-full bg-[#FF6B9D] hover:bg-[#FF6B9D]/90 flex items-center justify-center transition-all shadow-lg"
                         >
                           {isPlaying ? (
                             <Pause size={28} className="text-white" />
@@ -206,10 +229,11 @@ const Experience = () => {
                   <div className="p-4 border-t-2 border-[#F4A4A4]/10">
                     <p className="text-sm font-bold text-[#1A3C34]/60 mb-3">PitchLab 首页展示</p>
                     <div className="flex gap-3 overflow-x-auto pb-2">
-                      {exp.pitchlabImages.map((img, i) => (
+                                            {exp.pitchlabImages.map((img, i) => (
                         <div
                           key={i}
-                          className="flex-shrink-0 w-[280px] rounded-2xl overflow-hidden border-2 border-[#F4A4A4]/10 bg-white"
+                          className="flex-shrink-0 w-[280px] rounded-2xl overflow-hidden border-2 border-[#F4A4A4]/10 bg-white cursor-pointer hover:border-[#F4A4A4]/40 transition-all"
+                          onClick={() => openLightbox(exp.pitchlabImages || [], i)}
                         >
                           <img
                             src={img.src}
@@ -227,6 +251,57 @@ const Experience = () => {
           ))}
         </div>
       </div>
+
+      {/* Lightbox 图片放大查看 */}
+      {lightboxOpen && lightboxImages.length > 0 && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+          onClick={closeLightbox}
+        >
+          {/* 关闭按钮 */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors z-10"
+          >
+            <X size={24} className="text-white" />
+          </button>
+
+          {/* 左箭头 */}
+          {lightboxImages.length > 1 && (
+            <button
+              onClick={(e) => { e.stopPropagation(); prevImage(); }}
+              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors z-10"
+            >
+              <ChevronLeft size={24} className="text-white" />
+            </button>
+          )}
+
+          {/* 右箭头 */}
+          {lightboxImages.length > 1 && (
+            <button
+              onClick={(e) => { e.stopPropagation(); nextImage(); }}
+              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors z-10"
+            >
+              <ChevronRight size={24} className="text-white" />
+            </button>
+          )}
+
+          {/* 图片容器 */}
+          <div
+            className="relative max-w-[90vw] max-h-[85vh] flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={lightboxImages[lightboxIndex].src}
+              alt={lightboxImages[lightboxIndex].label}
+              className="max-w-full max-h-[75vh] object-contain rounded-2xl"
+            />
+            <p className="text-white/80 text-sm mt-4 font-medium">
+              {lightboxImages[lightboxIndex].label} ({lightboxIndex + 1} / {lightboxImages.length})
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

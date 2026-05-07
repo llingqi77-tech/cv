@@ -27,9 +27,8 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#FCE4EC] grid-bg-pink">
+    <section className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#FAF7F2] grid-bg">
       {/* 顶部渐变过渡 */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#FAF7F2] to-transparent z-10" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full py-20 lg:py-0">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -42,7 +41,7 @@ const Hero = () => {
           >
             <div className="relative aspect-[3/4] max-w-xs mx-auto lg:mx-0 lg:max-w-sm">
               <img
-                src={assetUrl("/profile-cutout.png")}
+                src={assetUrl("/profile-cutout.webp")}
                 alt="董璐瑶个人形象照"
                 className="relative w-full h-full object-contain object-bottom drop-shadow-[0_0_15px_rgba(244,164,164,0.6)]"
                 style={{
@@ -91,7 +90,7 @@ const Hero = () => {
               }`}
               style={{ transitionDelay: '250ms' }}
             >
-              <span className="text-base md:text-lg text-[#F06292] font-bold tracking-wide">嗨，我是</span>
+              <span className="text-base md:text-lg text-[#FF6B9D] font-bold tracking-wide">嗨，我是</span>
             </div>
 
             <h1
@@ -165,7 +164,7 @@ const Hero = () => {
             >
               <button
                 onClick={() => scrollToSection('#contact')}
-                className="group flex items-center gap-2 px-8 py-4 bg-[#1A3C34] text-white rounded-full font-bold transition-all duration-300 text-[17px] hover:bg-[#F06292] hover:scale-105 focus-visible:ring-2 focus-visible:ring-[#F4A4A4] focus-visible:ring-offset-2 shadow-lg"
+                className="group flex items-center gap-2 px-8 py-4 bg-[#1A3C34] text-white rounded-full font-bold transition-all duration-300 text-[17px] hover:bg-[#FF6B9D] hover:scale-105 focus-visible:ring-2 focus-visible:ring-[#F4A4A4] focus-visible:ring-offset-2 shadow-lg"
               >
                 <Mail size={20} />
                 联系我
@@ -190,7 +189,7 @@ const Hero = () => {
       >
         <button
           onClick={() => scrollToSection('#experience')}
-          className="flex flex-col items-center gap-2 text-[#F06292] hover:text-[#1A3C34] transition-colors"
+          className="flex flex-col items-center gap-2 text-[#FF6B9D] hover:text-[#1A3C34] transition-colors"
         >
           <span className="text-xs font-bold tracking-wider">向下滚动至经历</span>
           <ArrowDown size={20} className="animate-bounce" />

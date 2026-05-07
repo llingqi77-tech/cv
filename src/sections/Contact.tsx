@@ -56,7 +56,7 @@ const Contact = () => {
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <span className="text-[#F06292] text-sm font-bold uppercase tracking-wider">
+          <span className="text-[#FF6B9D] text-sm font-bold uppercase tracking-wider">
             联系我
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-[#1A3C34] mt-2 mb-4 tracking-tight">
